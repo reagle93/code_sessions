@@ -35,7 +35,7 @@ void solveWordWrap(int wordLen[], int n, int k)
 				current_cost = (k - currlen) * (k - currlen) + costStartIndex[j + 1];
 
 			if (current_cost < costStartIndex[i]) {
-				costStartIndex[i] = cost;
+				costStartIndex[i] = current_cost;
 				endIndex[i] = j;
 			}
 		}
