@@ -56,8 +56,7 @@ void reversePath(struct node*& node,
 	return;
 }
 
-struct node* insert(struct node* node,
-							int key)
+struct node* insert(struct node* node, int key)
 {
 	if (node == NULL)
 		return newNode(key);
