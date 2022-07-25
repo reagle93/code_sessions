@@ -9,7 +9,7 @@ void pushGreatestAtBack(int arr[], deque<int>& q, int i, int k) {
 	q.push_back(i);
 }
 
-void removeOutOfWindow(int arr[], deque<int>& q, int i, int k) {
+void removeOutOfWindowAtFront(int arr[], deque<int>& q, int i, int k) {
 	
 	while (!q.empty() && q.front() <= i - k)
 		q.pop_front();
@@ -27,7 +27,7 @@ void printKMax(int arr[], int n, int k)
 	for (int i = k; i < n; ++i)
 	{
 		cout << arr[q.front()] << " ";
-		removeOutOfWindow(arr, q, i, k);
+		removeOutOfWindowAtFront(arr, q, i, k);
 		pushGreatestAtBack(arr, q, i, k);
 	}
 	if(!q.empty())
