@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void pushGreatestAtBack(int arr[], deque<int>& q, int i, int k) {
+void pushGreatestAtBack(int arr[], deque<int>& q, int i) {
 	
 	while ((!q.empty()) && arr[i] >= arr[q.back()]) {
 		q.pop_back();
@@ -21,14 +21,14 @@ void printKMax(int arr[], int n, int k)
 
 	for (int i = 0; i < k; ++i)
 	{
-		pushGreatestAtBack(arr, q, i, k);
+		pushGreatestAtBack(arr, q, i);
 	}
 
 	for (int i = k; i < n; ++i)
 	{
 		cout << arr[q.front()] << " ";
 		removeOutOfWindowAtFront(arr, q, i, k);
-		pushGreatestAtBack(arr, q, i, k);
+		pushGreatestAtBack(arr, q, i);
 	}
 	if(!q.empty())
 		cout << arr[q.front()];
