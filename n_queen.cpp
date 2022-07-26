@@ -24,10 +24,10 @@ void nQueens(int col, int n){
 	}
 }
 
-bool canPlace(int col, int i){
+bool canPlace(int col, int row){
 	for (int j = 1;j <= col - 1;j++){
-		if (arr[j] == i ||
-			(abs(arr[j] - i) == abs(j - col))) //same row or diagnonal
+		if (arr[j] == row ||
+			(abs(arr[j] - row) == abs(j - col))) //same row or diagnonal
 		return false;
 	}
 	return true;
