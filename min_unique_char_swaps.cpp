@@ -21,12 +21,13 @@ void minCountUtil(string A, string B,
 	swap(A[ind], B[ind]);
 	minCountUtil(A, B, ele, ans, ind + 1);
   
+  	swap(A[ind], B[ind]);
+
     ele[A[ind]]++;
     ele[B[ind]]--;
   	if (ele[B[ind]] == 0)
 		ele.erase(B[ind]);
   
-	swap(A[ind], B[ind]);
 	minCountUtil(A, B, ele, ans, ind + 1);
 }
 
@@ -42,8 +43,8 @@ int minCount(string A, string B)
 
 int main()
 {
-	string A = "bfaaabbbbdbabababeba";
-	string B = "bbabbbbababababbbbde";
+	string A = "abcc";
+	string B = "aacd";
 
 	cout << minCount(A, B);
 	return 0;
