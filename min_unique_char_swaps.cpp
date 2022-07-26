@@ -4,6 +4,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+	string A = "abcc";
+	string B = "aaaa";
+	
 void minCountUtil(string A, string B,
 				unordered_map<char, int>& ele,
 				int& ans, int ind)
@@ -12,7 +15,7 @@ void minCountUtil(string A, string B,
 		ans = min(ans, (int)ele.size());
 		return;
 	}
-     
+	
     ele[B[ind]]++;
     ele[A[ind]]--;
   	if (ele[A[ind]] == 0)
@@ -29,13 +32,16 @@ void minCountUtil(string A, string B,
 		ele.erase(B[ind]);
   
 	minCountUtil(A, B, ele, ans, ind + 1);
+	return ;
 }
 
 int minCount(string A, string B)
 {
 	int ans = A.length();
 	unordered_map<char, int> ele;
-
+	for(auto elem: A)
+		ele[elem]++;
+		
 	minCountUtil(A, B, ele, ans, 0);
 
 	return ans;
@@ -44,7 +50,7 @@ int minCount(string A, string B)
 int main()
 {
 	string A = "abcc";
-	string B = "aacd";
+	string B = "baaa";
 
 	cout << minCount(A, B);
 	return 0;
