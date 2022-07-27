@@ -8,7 +8,7 @@ struct Job {
 	int profit; 
 };
 
-struct sortByjobProfitAsc {
+struct sortByProfitAsc {
 	bool operator()(const Job& a, const Job& b)
 	{
 		return (a.profit < b.profit);
