@@ -8,22 +8,22 @@ struct Job {
 	int profit; 
 };
 
-struct jobProfit {
+struct sortByjobProfitAsc {
 	bool operator()(Job const& a, Job const& b)
 	{
 		return (a.profit < b.profit);
 	}
 };
 
-bool sortByDeadline(Job job1, Job job2) {
+bool sortByDeadlineAsc(Job job1, Job job2) {
 	return (job1.dead > job2.dead);
 }
 
 void printJobScheduling(Job arr[], int n)
 {
-	sort(arr, arr + n, sortByDeadline);
+	sort(arr, arr + n, sortByDeadlineAsc);
 		
-	priority_queue<Job, vector<Job>, jobProfit> pq;
+	priority_queue<Job, vector<Job>, sortByjobProfitAsc> pq;
 	int slot_available;
 	vector<Job> result;
 
