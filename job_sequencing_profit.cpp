@@ -23,7 +23,7 @@ void printJobScheduling(Job arr[], int n)
 {
 	sort(arr, arr + n, sortByDeadlineAsc);
 		
-	priority_queue<Job, vector<Job>, sortByjobProfitAsc> pq;
+	priority_queue<Job, vector<Job>, sortByProfitAsc> pq;
 	int slot_available;
 	vector<Job> result;
 
