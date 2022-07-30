@@ -22,7 +22,7 @@ pair<int, bool> isBalanced(Node* root)
 	pair<int, bool> l = isBalanced(root->left);
 	pair<int, bool> r = isBalanced(root->right);
 
-	int height = (l.first > r.first ? l.first : r.first) + 1;
+	int height = max(l.first, r.first) + 1;
 	int isBalance = (abs(l.first - r.first) >= 2)? false : (l.second && r.second);
 	
   	return make_pair(height, isBalance);
