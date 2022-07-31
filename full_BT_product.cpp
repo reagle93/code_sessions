@@ -1,48 +1,38 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 
 int numoffbt(int arr[], int n)
 {
-	int maxvalue = INT_MIN, minvalue = INT_MAX;
-  
-	for (int i = 0; i < n; i++)
-	{
-		maxvalue = max(maxvalue, arr[i]);
-		minvalue = min(minvalue, arr[i]);
-	}
+int maxvalue = *max_element(arr, arr+n);
 
-	bool visited[maxvalue + 2];
-	int value[maxvalue + 2];
-  
-	memset(visited, false, sizeof(mark));
-	memset(value, 0, sizeof(value));
+set<int> visited(arr, arr+n);
 
-	for (int i = 0; i < n; i++)
-	{
-		visited[arr[i]] = true;
-		value[arr[i]] = 1;
-	}
+int treeCount[maxvalue + 2];
+memset(treeCount, 0, sizeof(treeCount));
 
-	int ans = 0;
-	for (int i = minvalue; i <= maxvalue; i++)
-	{
-		if (visited[i]) {
+for (int i = 0; i < n; i++)
+{
+	visited.insert(arr[i]);
+	treeCount[arr[i]] = 1;
+}
 
-			for (int j = i + i; j <= maxvalue && j/i <= i; j += i) {
+int ans = 0;
 
-				if (visited[j] == false)
-					continue;
+for (int i = 0; i < n; i++) {	
 
-				value[j] += (value[i] * value[j/i]);
+      for (int j = arr[i] + arr[i]; j <= maxvalue && j/arr[i] <= arr[i]; j += arr[i]) {
 
-				if (i != j/i)
-					value[j] += (value[i] * value[j/i]);
-			}
-		}
-		ans += value[i];
-	}
-	return ans;
+	    if (visited.find(j) != visited.end()) {
+
+		treeCount[j] = treeCount[j] + (treeCount[arr[i]] * treeCount[j/arr[i]]);
+
+	      if (arr[i] != j/arr[i])
+		treeCount[j] = treeCount[j] + (treeCount[arr[i]] * treeCount[j/arr[i]]);
+	    }
+	}  
+ans += treeCount[arr[i]];
+}
+return ans;
 }
 
 int main()
