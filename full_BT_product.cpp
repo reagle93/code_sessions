@@ -17,6 +17,8 @@ int numoffbt(int arr[], int n)
 	}
 
 	int ans = 0;
+	
+	sort(arr, arr+n); // or from min to max
 
 	for (int i = 0; i < n; i++) {	
 
@@ -29,7 +31,9 @@ int numoffbt(int arr[], int n)
 		      if (arr[i] != j/arr[i])
 			treeCount[j] = treeCount[j] + (treeCount[arr[i]] * treeCount[j/arr[i]]);
 		    }
-		}  
+		} 
+		
+		cout<<"value for "<<arr[i]<<" = "<<treeCount[arr[i]]<<"\n";
 	ans += treeCount[arr[i]];
 	}
 	return ans;
@@ -37,7 +41,7 @@ int numoffbt(int arr[], int n)
 
 int main()
 {
-	int arr[] = { 2, 3, 4, 6 };
+	int arr[] = { 2, 4, 6, 3 };
 	int n = sizeof(arr)/sizeof(arr[0]);
 
 	cout << numoffbt(arr, n) << endl;
